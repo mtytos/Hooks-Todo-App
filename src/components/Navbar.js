@@ -3,7 +3,6 @@ import { TodoContext } from "../contexts/TodoContext";
 import {Link} from "react-router-dom";
 
 const Navbar = () => {
-    const { todos } = useContext(TodoContext);
 
     return (
         <nav className="nav-wraper blue-grey darken-3">

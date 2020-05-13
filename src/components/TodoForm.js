@@ -1,16 +1,17 @@
 import React, {useContext, useState} from "react";
 import {TodoContext} from "../contexts/TodoContext";
 import Redirect from "react-router-dom/es/Redirect";
+import {addTodo} from "../actions/todoAction";
 
 const NewTodo = () => {
-    const {addTodo} = useContext(TodoContext);
+    const { dispatch } = useContext(TodoContext);
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [toHome, setToHome] = useState(false);
     const add = (e) => {
         e.preventDefault();
         if (title !== '') {
-            addTodo(title, text);
+            dispatch(addTodo(title, text));
             setTitle('');
             setText('');
             setToHome(true);

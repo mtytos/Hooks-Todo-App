@@ -1,20 +1,18 @@
-import React, { createContext, useState } from "react";
-import uuid from 'uuid/dist/v1';
+import React, { createContext, useReducer, useEffect } from "react";
+import {todoReducer} from "../reducers/todoReducer";
+
 export const TodoContext = createContext();
 
 const TodoContextProvider = (props) => {
-    const [todos, setTodos] = useState([
-        {title: 'Create app', text: 'i dont have sleep', id: 1},
-        {title: 'Create app2', text: 'i dont have sleep2', id: 2}
-    ]);
-    const addTodo = (title, text) => {
-        setTodos([...todos, {title, text, id: uuid() }]);
-    };
-    const removeTodo = (id) => {
-        setTodos(todos.filter(todo => todo.id !== id));
-    };
+    const [todos, dispatch] = useReducer(todoReducer, [], () => {
+        const localTodo = localStorage.getItem('todos');
+        return localTodo ? JSON.parse(localTodo) : [];
+    });
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    }, [todos])
     return (
-        <TodoContext.Provider value={{todos, addTodo, removeTodo}}>
+        <TodoContext.Provider value={{todos, dispatch}}>
             { props.children }
         </TodoContext.Provider>
     )

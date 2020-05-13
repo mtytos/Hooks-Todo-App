@@ -1,9 +1,10 @@
 import React, {useContext} from "react";
 import {TodoContext} from "../contexts/TodoContext";
+import {removeTodo} from "../actions/todoAction";
 
 const TodoList = () => {
-    const {todos} = useContext(TodoContext);
-    const {removeTodo} = useContext(TodoContext);
+    const { todos } = useContext(TodoContext);
+    const { dispatch } = useContext(TodoContext);
 
     return todos.length ? (
         todos.map(todo => {
@@ -17,7 +18,7 @@ const TodoList = () => {
                                     <p>{todo.text}</p>
                                 </div>
                                 <div className="card-action">
-                                    <a href="#" onClick={() => removeTodo(todo.id)}>DELETE</a>
+                                    <a href="#" onClick={() => dispatch(removeTodo(todo))}>DELETE</a>
                                 </div>
                             </div>
                         </div>
