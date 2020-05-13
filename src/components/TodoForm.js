@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import {TodoContext} from "../contexts/TodoContext";
 import { Redirect } from "react-router-dom";
 import {addTodo} from "../actions/todoAction";
+import {ThemeContext} from "../contexts/ThemeContext";
 
 const NewTodo = () => {
     const { dispatch } = useContext(TodoContext);
@@ -17,6 +18,9 @@ const NewTodo = () => {
             setToHome(true);
         }
     }
+    const { theme } = useContext(ThemeContext);
+    let color = theme.isDark ? theme.dark : theme.light;
+    const style = 'waves-effect waves-light btn ' + color;
 
     return (
         <div className="container left-align">
@@ -36,7 +40,7 @@ const NewTodo = () => {
                         <label htmlFor="textarea2">Description</label>
                     </div>
                 </div>
-                <button className="waves-effect waves-light btn light-blue" onClick={add}><i className="material-icons left">add_box</i>Add Todo</button>
+                <button className={style} onClick={add}><i className="material-icons left">add_box</i>Add Todo</button>
             </form>
             { toHome ? <Redirect to="/" /> : null }
         </div>
