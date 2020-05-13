@@ -1,21 +1,25 @@
-import React, { useContext, useState } from "react";
-import { TodoContext } from "../contexts/TodoContext";
+import React, {useContext, useState} from "react";
+import {TodoContext} from "../contexts/TodoContext";
+import Redirect from "react-router-dom/es/Redirect";
 
 const NewTodo = () => {
-    const { addTodo } = useContext(TodoContext);
-    const [ title, setTitle ] = useState('');
-    const [ text, setText ] = useState('');
+    const {addTodo} = useContext(TodoContext);
+    const [title, setTitle] = useState('');
+    const [text, setText] = useState('');
+    const [toHome, setToHome] = useState(false);
     const add = (e) => {
         e.preventDefault();
         if (title !== '') {
             addTodo(title, text);
             setTitle('');
             setText('');
+            setToHome(true);
         }
     }
 
     return (
-        <div className="row">
+        <div className="container left-align">
+            <br/><br/>
             <form className="col s12">
                 <div className="row">
                     <div className="input-field col s12">
@@ -33,6 +37,7 @@ const NewTodo = () => {
                 </div>
                 <a className="waves-effect waves-light btn" onClick={add}><i className="material-icons left">add_box</i>Add Todo</a>
             </form>
+            { toHome ? <Redirect to="/" /> : null }
         </div>
     )
 }

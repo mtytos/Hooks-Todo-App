@@ -1,17 +1,24 @@
 import React, { useContext } from "react";
 import { TodoContext } from "../contexts/TodoContext";
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
     const { todos } = useContext(TodoContext);
 
     return (
-        <nav>
-            <div className="nav-wrapper">
-                <a href="#" className="brand-logo right">{ todos.length}</a>
-                <ul id="nav-mobile" className="left hide-on-med-and-down">
-                    <li><a href="#">Sass</a></li>
-                    <li><a href="#">Components</a></li>
-                    <li><a href="#">JavaScript</a></li>
+        <nav className="nav-wraper blue-grey darken-3">
+            <div className="container">
+                <ul className="hide-on-small-only">
+                    <li><Link to={'/'}>Todo</Link></li>
+                    <li><Link to={'/addtodo'}>Add new Todo</Link></li>
+                </ul>
+                <ul className="hide-on-med-and-up">
+                    <li><Link to={'/'}>
+                        <i className="material-icons">today</i>
+                    </Link></li>
+                    <li><Link to={'/addtodo'}>
+                        <i className="material-icons">add_to_queue</i>
+                    </Link></li>
                 </ul>
             </div>
         </nav>
