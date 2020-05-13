@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
-import { TodoContext } from "../contexts/TodoContext";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
 
 const Navbar = () => {
 
     return (
-        <nav className="nav-wraper blue-grey darken-3">
+        <nav className="nav-wraper light-blue">
             <div className="container">
                 <ul className="hide-on-small-only">
                     <li><Link to={'/'}>Todo</Link></li>

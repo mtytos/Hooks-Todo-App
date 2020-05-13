@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+textarea.materialize-textarea:focus:not([readonly]) {
+   border-bottom: 1px solid #383535;
+   box-shadow: 0 1px 0 0 #383535;
+}
+
+textarea.materialize-textarea:focus:not([readonly])+label {
+  color: #383535;
+}

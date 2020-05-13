@@ -3,22 +3,25 @@ import {TodoContext} from "../contexts/TodoContext";
 import {removeTodo} from "../actions/todoAction";
 
 const TodoList = () => {
-    const { todos } = useContext(TodoContext);
-    const { dispatch } = useContext(TodoContext);
+    const {todos} = useContext(TodoContext);
+    const {dispatch} = useContext(TodoContext);
 
     return todos.length ? (
         todos.map(todo => {
             return (
-                <div className="container left-align">
-                    <div className="row" key={todo.id}>
+                <div className="container left-align" key={todo.id}>
+                    <br/><br/>
+                    <div className="row">
                         <div className="col s12 m12">
                             <div className="card">
-                                <div className="card-content">
+                                <div className="card-content center-align">
                                     <span className="card-title">{todo.title}</span>
                                     <p>{todo.text}</p>
                                 </div>
-                                <div className="card-action">
-                                    <a href="#" onClick={() => dispatch(removeTodo(todo))}>DELETE</a>
+                                <div className="card-action center-align">
+                                    <button className="waves-effect waves-red btn-flat"
+                                            onClick={() => dispatch(removeTodo(todo))}>DELETE
+                                    </button>
                                 </div>
                             </div>
                         </div>

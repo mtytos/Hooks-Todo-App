@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import {TodoContext} from "../contexts/TodoContext";
-import Redirect from "react-router-dom/es/Redirect";
+import { Redirect } from "react-router-dom";
 import {addTodo} from "../actions/todoAction";
 
 const NewTodo = () => {
@@ -36,7 +36,7 @@ const NewTodo = () => {
                         <label htmlFor="textarea2">Description</label>
                     </div>
                 </div>
-                <a className="waves-effect waves-light btn" onClick={add}><i className="material-icons left">add_box</i>Add Todo</a>
+                <button className="waves-effect waves-light btn light-blue" onClick={add}><i className="material-icons left">add_box</i>Add Todo</button>
             </form>
             { toHome ? <Redirect to="/" /> : null }
         </div>
