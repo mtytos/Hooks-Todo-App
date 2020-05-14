@@ -35,9 +35,8 @@ const TodoList = () => {
                 <div className="col s12 m12">
                     <div className="card">
                         <div className="card-content">
-                            <span className="card-title">Card Title</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
+                            <span className="card-title">You have nothing todo</span>
+                            <p>You can add new todo</p>
                         </div>
                     </div>
                 </div>
